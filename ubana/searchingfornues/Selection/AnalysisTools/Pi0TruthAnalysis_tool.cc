@@ -186,6 +186,7 @@ void Pi0TruthAnalysis::analyzeEvent(art::Event const &e, bool fData)
   }
 
   auto mct = mct_h->at(0);
+  if (mct.NeutrinoSet()==0) return;
   auto neutrino = mct.GetNeutrino();
   auto nu = neutrino.Nu();
 

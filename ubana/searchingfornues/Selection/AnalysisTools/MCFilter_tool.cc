@@ -131,6 +131,7 @@ void MCFilter::analyzeEvent(art::Event const &e, bool fData)
   auto const &mct_h = e.getValidHandle<std::vector<simb::MCTruth> >(fMCTproducer);
 
   auto mct = mct_h->at(0);
+  if (mct.NeutrinoSet()==0) return;
   auto neutrino = mct.GetNeutrino();
   auto nu = neutrino.Nu();
 

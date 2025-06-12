@@ -230,9 +230,9 @@ void SlicePurCompl::analyzeEvent(art::Event const &e, bool fData)
 
   // generator, simb::MCTruth
   art::ValidHandle<std::vector<simb::MCTruth>> inputMCTruth = e.getValidHandle<std::vector<simb::MCTruth>>(fMCTproducer);
-  if (inputMCTruth->size() < 1)
-    return;
+  if (inputMCTruth->size() < 1) return;
   const auto &mct = inputMCTruth->at(0);
+  if (mct.NeutrinoSet()==0) return;
   plep.push_back(mct.GetNeutrino().Lepton().P());
   for (int im = 0; im < mct.NParticles(); ++im)
   {
